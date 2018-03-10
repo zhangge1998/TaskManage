@@ -1,0 +1,54 @@
+body{
+    /*background-color: #408080;*/
+}
+.loginContainer,.logupContainer{
+    width: 400px;
+    margin: 0 auto;
+    margin-top: 200px;
+    border: 1px solid #777777;
+    border-radius: 25px;
+    height: 250px;
+    padding-top: 10px;
+    padding-left: 35px;
+    background-color: white;
+}
+.title{
+    width: 150px;
+    margin:0 auto;
+    font-size: 35px;
+    color: #954121;
+}
+.input-group{
+    width: 300px;
+    margin:0 auto;
+    margin-top: 60px;
+}
+.input{
+    margin-top: 10px;
+}
+.input span{
+    position: relative;
+}
+.more a{
+    text-decoration: none;
+    margin-right: 100px;
+}
+.more{
+    width: 300px;
+    margin: 0 auto;
+    margin-top: 15px;
+}
+button{
+    width: 75px;
+    height: 35px;
+    font-size: 18px;
+    background-color: #00B7FF;
+    border-style: none;
+    border-radius: 25px;
+    margin-top: 20px;
+    float: left;
+    margin-left: 30px;
+}
+.logupContainer button{
+    width: 200px;
+}
