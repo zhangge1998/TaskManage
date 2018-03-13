@@ -25,5 +25,10 @@ export const taskPartIn = (actor) =>({
 //我的主页
 export const myHome = ()=>({
     type:'MY_HOME'
-})
+});
+// //我的任务
+// export const myTasks =(info)=>({
+//     type:'MY_TASKS',
+//     info
+// });
 

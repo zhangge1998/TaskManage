@@ -16,9 +16,9 @@ const mapDispatchToProps=(dispatch)=>({
     myHome: ()=> {
         console.log('我的主页');
         dispatch(
-            // {type: 'MY_HOME'}
-            myHome()
-        )
+            {type: 'MY_HOME'}
+            // myHome()
+        );
     },
     setting: ()=> {
         console.log('修改个人信息');

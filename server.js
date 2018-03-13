@@ -9,7 +9,7 @@ const Store = require('express-mysql-session');
 const app = new express();
 
 const login = require('./server/routers/login');
-// const logup = require('./server/routers/logup');
+const  taskItemPanel= require('./server/routers/taskItemPanel');
 // const home = require('./server/routers/home');
 // const searchTasks = require('./server/routers/searchTasks');
 // const takePartInTasks =  require('./server/routers/takePartInTasks');
@@ -43,6 +43,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static(__dirname+'/public'));
 
 app.use('/',login);
+app.use('/',taskItemPanel)
 // app.use('/',logup);
 // app.use('/',home);
 // app.use('/',searchTasks);
@@ -51,6 +52,7 @@ app.use('/',login);
 app.get('*',function (req,res) {
     res.sendFile(path.resolve(__dirname,'public','root.html'));
 });
+
 
 app.listen(8080,()=>{
     console.log("sever start in 8080");

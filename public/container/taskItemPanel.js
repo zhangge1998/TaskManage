@@ -5,9 +5,18 @@ import TaskItemPanel from '../component/taskItemPanel'
 import {connect} from 'react-redux'
 const mapStateToProps=(state)=> {
     return{
-        taskInfo:state.task.list
+        name:state.task.name,
+        myTasks:state.task.myTasks
     };
 };
-const mapDispatchToProps=(dispatch)=>{
-};
+const mapDispatchToProps=(dispatch)=>({
+    getTasks:()=>{
+        dispatch({
+            type:'SHOW_TASKS'
+        });
+    }
+    })
+
+
+;
 export default connect(mapStateToProps,mapDispatchToProps)(TaskItemPanel)

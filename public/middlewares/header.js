@@ -20,11 +20,11 @@ export default store=>next=>action=>{
         console.log('333');
         window.location.href='/userInfoEdit';
     }
-    // if(action.type==='LOGOUT'){
-    //     window.location.href='/signin';
-    // }
+    if(action.type==='LOGOUT'){
+        window.location.href='/login';
+    }
     if(action.type==='BACK_INDEX'){
-        window.location.href='/';
+        window.location.href='/home';
     }
     else{
         next(action);

@@ -4,6 +4,7 @@
 import React from 'react'
 import '../style/taskDetail.css'
 import Header from '../container/header';
+import {Route} from 'react-router-dom'
 import TaskMember from './taskMember'
 function TaskStep(props) {
     return (
@@ -37,25 +38,28 @@ export default class TaskDetail extends React.Component {
             }
         });
         return (
-            <div id="taskDetail">
-                <div className="author">
-                    <img id="img" src="../images/photo.jpg"/>
-                    <div className="name">
-                        <a>创建人：{maker}</a>
+            <div>
+                <Route path="/" component={Header}/>
+                <div id="taskDetail">
+                    <div className="author">
+                        <img id="img" src="../images/photo.jpg"/>
+                        <div className="name">
+                            <a>创建人：{maker}</a>
+                        </div>
                     </div>
-                </div>
-                <div>
-                    <a style={{'fontSize': '20px'}} href="#">任务名称：{name}</a>
-                    <br/>
-                    <span>创建时间：{time}</span>
-                    <span>参与人数：{count}</span>
-                    <p>简介：{intro}</p>
-                    <p>任务列表：</p>
-                    <ul>{newItems}</ul>
-                    <button>修改</button>
-                </div>
-                <div>
-                    <TaskMember/>
+                    <div>
+                        <a style={{'fontSize': '20px'}} href="#">任务名称：{name}</a>
+                        <br/>
+                        <span>创建时间：{time}</span>
+                        <span>参与人数：{count}</span>
+                        <p>简介：{intro}</p>
+                        <p>任务列表：</p>
+                        <ul>{newItems}</ul>
+                        <button>修改</button>
+                    </div>
+                    <div>
+                        <TaskMember/>
+                    </div>
                 </div>
             </div>
         )

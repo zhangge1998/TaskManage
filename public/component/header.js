@@ -10,8 +10,8 @@ export default class Header extends React.Component{
     // }
     render() {
         const {userInfo,myHome,setting,onIndex,logOut} = this.props;
-        console.log(this.props);
-        console.log('1');
+        // console.log(this.props);
+        // console.log('1');
         // if(userInfo===undefined||userInfo===null){
         //     return (
         //         <div className="nav">
@@ -33,7 +33,7 @@ export default class Header extends React.Component{
             <div className="nav">
                 <div className="header">
                     <img id="logo" src="../images/1.jpg"/>
-                    <a id="home" onClick={this.props.onIndex}>首页</a>
+                    <a id="home" onClick={onIndex}>首页</a>
                     <input id="search" type="text" autoComplete="off" placeholder="搜索"/>
                     <div id="user">
                         <div className="dropDown">
@@ -41,9 +41,9 @@ export default class Header extends React.Component{
                             <img id="down" src="../images/down.jpg"/>
                         </div>
                         <ul className="dropDown-menu">
-                            <li onClick={this.props.myHome}>我的主页</li>
-                            <li onClick={this.props.setting}>设置</li>
-                            <li onClick={this.props.logOut}>退出</li>
+                            <li onClick={myHome}>我的主页</li>
+                            <li onClick={setting}>设置</li>
+                            <li onClick={logOut}>退出</li>
                         </ul>
                     </div>
                 </div>

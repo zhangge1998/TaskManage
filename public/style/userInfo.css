@@ -12,21 +12,23 @@ body{
     top:100px;
     /*left:10%;*/
 }
-.overlay tr{
-    height:35px;
-    border-bottom: 1px solid #b8b8b8;
-}
-.overlay td{
-    width:200px;
-    padding: 10px 0;
-    text-align: center;
-}
+/*.overlay tr{*/
+    /*height:35px;*/
+    /*border-bottom: 1px solid #b8b8b8;*/
+/*}*/
+/*.overlay td{*/
+    /*width:200px;*/
+    /*padding: 10px 0;*/
+    /*text-align: center;*/
+/*}*/
 .overlay input{
     line-height: 25px;
+    display: inline-block;
+    margin: 5px 5px;
 }
-.tips{
-    display: none;
-}
+/*.tips{*/
+    /*display: none;*/
+/*}*/
 .top-line img{
     width:80px;
     height:80px;
