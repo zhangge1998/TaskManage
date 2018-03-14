@@ -11,7 +11,7 @@ function TaskItem(props) {
     return (
         <div className="item">
             <img id="userimage" src="../images/photo.jpg"/>
-            <a href="#" className="name">{props.maker}</a>
+            <span><a href="#" className="name">{props.maker}</a></span>
             <button id="delete">删除</button>
             <div>
                 <a style={{'fontSize': '20px'}} href="#">{props.name}</a>

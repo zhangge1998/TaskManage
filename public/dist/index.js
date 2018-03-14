@@ -18955,7 +18955,7 @@ exports.default = function (store) {
                     } else {
                         var data = JSON.parse(res.text);
                         console.log(data);
-                        next({ type: 'MY_TASKS', info: data.all });
+                        next({ type: 'MY_TASKS', info: data });
                     }
                 });
             } else next(action);
@@ -19009,11 +19009,23 @@ var Header = function (_React$Component) {
     }
 
     _createClass(Header, [{
-        key: 'render',
+        key: 'display',
 
         // componentDidMount(){
         //     this.props.UserInfo();
         // }
+        value: function display() {
+            var menu = document.getElementById('show');
+            menu.style.display = 'block';
+        }
+    }, {
+        key: 'hidden',
+        value: function hidden() {
+            var menu = document.getElementById('show');
+            menu.style.display = 'none';
+        }
+    }, {
+        key: 'render',
         value: function render() {
             var _props = this.props,
                 userInfo = _props.userInfo,
@@ -19059,27 +19071,32 @@ var Header = function (_React$Component) {
                         { id: 'user' },
                         _react2.default.createElement(
                             'div',
-                            { className: 'dropDown' },
+                            { className: 'dropDown', onMouseOver: this.display.bind(this), onMouseOut: this.hidden.bind(this) },
+                            _react2.default.createElement(
+                                'span',
+                                null,
+                                '\u54C8\u54C8'
+                            ),
                             _react2.default.createElement('img', { id: 'headImage', src: '../images/photo.jpg' }),
-                            _react2.default.createElement('img', { id: 'down', src: '../images/down.jpg' })
-                        ),
-                        _react2.default.createElement(
-                            'ul',
-                            { className: 'dropDown-menu' },
+                            _react2.default.createElement('img', { id: 'down', src: '../images/down.jpg' }),
                             _react2.default.createElement(
-                                'li',
-                                { onClick: myHome },
-                                '\u6211\u7684\u4E3B\u9875'
-                            ),
-                            _react2.default.createElement(
-                                'li',
-                                { onClick: setting },
-                                '\u8BBE\u7F6E'
-                            ),
-                            _react2.default.createElement(
-                                'li',
-                                { onClick: logOut },
-                                '\u9000\u51FA'
+                                'ul',
+                                { className: 'dropDown-menu', id: 'show', style: { 'display': 'none' } },
+                                _react2.default.createElement(
+                                    'li',
+                                    { onClick: myHome },
+                                    '\u6211\u7684\u4E3B\u9875'
+                                ),
+                                _react2.default.createElement(
+                                    'li',
+                                    { onClick: setting },
+                                    '\u8BBE\u7F6E'
+                                ),
+                                _react2.default.createElement(
+                                    'li',
+                                    { onClick: logOut },
+                                    '\u9000\u51FA'
+                                )
                             )
                         )
                     )
@@ -19160,7 +19177,7 @@ exports = module.exports = __webpack_require__(11)(false);
 
 
 // module
-exports.push([module.i, "*{\n    margin: 0;\n    padding: 0;\n}\nbody{\n    background-color: #fff;\n}\na,body{\n    color: #333;\n    text-decoration: none;\n}\n#logo{\n    width:100px;\n    height:60px;\n    float: left;\n}\n#home{\n    font-size: 24px;\n    margin-left: 50px;\n    left:20px;\n}\n#search{\n    padding: 0 40px 0 20px;\n    height:38px;\n    font-size: 14px;\n    border: 1px solid #eee;\n    border-radius: 40px;\n    background: #eee;\n    margin: 10px 150px;\n}\n\n.nav{\n    width:100%;\n    height:63px;\n    z-index: 9998;\n    background-color: #fff;\n    border:1px solid #f0f0f0;\n    margin: 0 auto;\n    position: fixed;\n    right:0;\n    left:0;\n}\n.header{\n    height:63px;\n    padding: 3px 20px 0px 10px;\n}\n\n.mm{\n    vertical-align: middle;\n}\n#user{\n    float: right;\n}\n\n#headImage{\n    width:50px;\n    height:50px;\n    top:2px;\n    border-radius: 100%;\n    border: solid 1px;\n    vertical-align: middle;\n    display: inline-block;\n}\n\n#down{\n    width:12px;\n    height:9px;\n    margin-left: 10px;\n}\n.dropDown-menu {\n    width:120px;\n    background-color: #fff;\n    border: 1px solid rgba(0,0,0,.15);\n    line-height: 20px;\n    font-size: 14px;\n    /*display: none;*/\n    list-style: none;\n    margin: 9px 0;\n    box-shadow: 0 6px 12px rgba(0,0,0,.175);\n}\n.dropDown-menu a{\n    padding: 10px 20px;\n    line-height: 30px;\n}\n.overlay{\n    width:400px;\n    margin-top: 50px;\n    margin-left: auto;\n    margin-right: auto;\n    /*display: none;*/\n}\n.overlay tr{\n    height:35px;\n    border-bottom: 1px solid #b8b8b8;\n}\n.overlay td{\n    width:200px;\n    padding: 10px 0;\n    text-align: center;\n}\n.overlay input{\n    line-height: 25px;\n}\n.tips{\n    display: none;\n}\n.top-line img{\n    width:100px;\n    height:100px;\n    border-radius: 100%;\n}\n.left{\n    margin: 0 50px 0 100px;\n}\n", ""]);
+exports.push([module.i, "*{\n    margin: 0;\n    padding: 0;\n}\nbody{\n    background-color: #fff;\n}\na,body{\n    color: #333;\n    text-decoration: none;\n}\n#logo{\n    width:100px;\n    height:60px;\n    float: left;\n}\n#home{\n    font-size: 24px;\n    margin-left: 50px;\n    left:20px;\n}\n#search{\n    padding: 0 40px 0 20px;\n    height:38px;\n    font-size: 14px;\n    border: 1px solid #eee;\n    border-radius: 40px;\n    background: #eee;\n    margin: 10px 150px;\n}\n\n.nav{\n    width:100%;\n    height:63px;\n    z-index: 9998;\n    background-color: #fff;\n    border:1px solid #f0f0f0;\n    margin: 0 auto;\n    position: fixed;\n    right:0;\n    left:0;\n}\n.header{\n    height:63px;\n    padding: 3px 20px 0px 10px;\n}\n\n.mm{\n    vertical-align: middle;\n}\n#user{\n    float: right;\n    /*position: ;*/\n}\n\n#headImage{\n    width:50px;\n    height:50px;\n    top:2px;\n    border-radius: 100%;\n    border: solid 1px;\n    vertical-align: middle;\n    display: inline-block;\n}\n\n#down{\n    width:12px;\n    height:9px;\n    margin-left: 10px;\n}\n.dropDown-menu {\n    width:120px;\n    background-color: #fff;\n    border: 1px solid rgba(0,0,0,.15);\n    line-height: 20px;\n    font-size: 14px;\n    /*display: none;*/\n    list-style: none;\n    margin: 9px 0;\n    box-shadow: 0 6px 12px rgba(0,0,0,.175);\n}\n.dropDown-menu a{\n    padding: 10px 20px;\n    line-height: 30px;\n}\n.overlay{\n    width:400px;\n    margin-top: 50px;\n    margin-left: auto;\n    margin-right: auto;\n    /*display: none;*/\n}\n.overlay tr{\n    height:35px;\n    border-bottom: 1px solid #b8b8b8;\n}\n.overlay td{\n    width:200px;\n    padding: 10px 0;\n    text-align: center;\n}\n.overlay input{\n    line-height: 25px;\n}\n.tips{\n    display: none;\n}\n.top-line img{\n    width:100px;\n    height:100px;\n    border-radius: 100%;\n}\n.left{\n    margin: 0 50px 0 100px;\n}\n\n#user span{\n    font-size: 20px;\n    margin: 5px;\n}\n", ""]);
 
 // exports
 
@@ -19747,9 +19764,13 @@ function TaskItem(props) {
         { className: 'item' },
         _react2.default.createElement('img', { id: 'userimage', src: '../images/photo.jpg' }),
         _react2.default.createElement(
-            'a',
-            { href: '#', className: 'name' },
-            props.maker
+            'span',
+            null,
+            _react2.default.createElement(
+                'a',
+                { href: '#', className: 'name' },
+                props.maker
+            )
         ),
         _react2.default.createElement(
             'button',

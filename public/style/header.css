@@ -50,6 +50,7 @@ a,body{
 }
 #user{
     float: right;
+    /*position: ;*/
 }
 
 #headImage{
@@ -111,4 +112,9 @@ a,body{
 }
 .left{
     margin: 0 50px 0 100px;
+}
+
+#user span{
+    font-size: 20px;
+    margin: 5px;
 }

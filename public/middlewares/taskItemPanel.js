@@ -12,7 +12,7 @@ export default store=>next=>action=>{
                 else{
                     const data=JSON.parse(res.text);
                     console.log(data);
-                    next({type:'MY_TASKS',info:data.all})
+                    next({type:'MY_TASKS',info:data})
                 }
             });
     }

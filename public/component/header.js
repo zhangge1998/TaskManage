@@ -8,6 +8,14 @@ export default class Header extends React.Component{
     // componentDidMount(){
     //     this.props.UserInfo();
     // }
+    display(){
+        var menu=document.getElementById('show');
+        menu.style.display='block';
+    }
+    hidden(){
+        var menu=document.getElementById('show');
+        menu.style.display='none';
+    }
     render() {
         const {userInfo,myHome,setting,onIndex,logOut} = this.props;
         // console.log(this.props);
@@ -36,15 +44,17 @@ export default class Header extends React.Component{
                     <a id="home" onClick={onIndex}>首页</a>
                     <input id="search" type="text" autoComplete="off" placeholder="搜索"/>
                     <div id="user">
-                        <div className="dropDown">
+                        <div className="dropDown"  onMouseOver={this.display.bind(this)} onMouseOut={this.hidden.bind(this)}>
+                            <span>哈哈</span>
                             <img id="headImage" src="../images/photo.jpg"/>
                             <img id="down" src="../images/down.jpg"/>
+                            <ul className="dropDown-menu"  id="show" style={{'display':'none'}}>
+                                <li onClick={myHome}>我的主页</li>
+                                <li onClick={setting}>设置</li>
+                                <li onClick={logOut}>退出</li>
+                            </ul>
                         </div>
-                        <ul className="dropDown-menu">
-                            <li onClick={myHome}>我的主页</li>
-                            <li onClick={setting}>设置</li>
-                            <li onClick={logOut}>退出</li>
-                        </ul>
+
                     </div>
                 </div>
                 {this.props.children}
@@ -58,4 +68,4 @@ Header.prototypes={
     setting:PropTypes.func.isRequired,
     logOut:PropTypes.func.isRequired,
     onIndex:PropTypes.func.isRequired
-}
+};
