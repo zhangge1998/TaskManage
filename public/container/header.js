@@ -6,13 +6,13 @@ import {connect} from 'react-redux'
 import {myHome} from '../actions/actions'
 const mapStateToProps=(state)=> {
     return{
-        // userInfo:state.userInfo.list
+        userInfo:state.userInfo.list
     };
 };
 const mapDispatchToProps=(dispatch)=>({
-    // UserInfo: ()=> {
-    //     dispatch({type: "USER_INFO"})
-    // },
+    UserInfo: ()=> {
+        dispatch({type: "USER_INFO"})
+    },
     myHome: ()=> {
         console.log('我的主页');
         dispatch(

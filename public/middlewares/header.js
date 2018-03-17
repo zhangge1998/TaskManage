@@ -3,15 +3,20 @@
  */
 import request from 'superagent'
 export default store=>next=>action=>{
-    // if(action.type==='USER_INFO'){
-    //     request.get('./userInfo')
-    //         .end((err,res)=>{
-    //             if(err){
-    //                 console.log(err);
-    //             }
-    //             next({type:"ALL_USER_INFO",data:res.body})
-    //         })
-    // }
+    if(action.type==='USER_INFO'){
+        request.get('./userInfo')
+            .end((err,res)=>{
+                if(err){
+                    console.log(err);
+                }
+                console.log('111000');
+                // const data=JSON.parse(res.text);
+                // console.log(data);
+
+                console.log(res.body);
+                next({type:"ALL_USER_INFO",userInfo:res.body})
+            })
+    }
     if(action.type==='MY_HOME'){
         console.log('222');
         window.location.href='/myHome';

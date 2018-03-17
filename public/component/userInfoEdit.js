@@ -9,31 +9,29 @@ import {Route} from 'react-router-dom'
 export default class UserInfoEdit extends React.Component {
     render() {
         const {onClickFixInfo, onSavePathClick, onChange, username, password, email, id, headPath, sex, intro} = this.props;
-        console.log(this.props);
-        console.log('11111');
         return (
             <div>
                 <Route path='/' component={Header}/>
                 <div className="overlay">
                     <form>
-                        <label htmlFor="name">用户名：</label>
+                        <label htmlFor="name" className="left">用户名：</label>
                         <input onChange={onChange} value={username} type="text" name="name" id="name"/>
                         <br />
-                        <label htmlFor="password">密码：</label>
+                        <label htmlFor="password" className="left">密  码：</label>
                         <input onChange={onChange} value={password} type="password" name="password" id="password"/>
                         <br />
-                        <img id="image" src={headPath}/><br/>
-                        <input type="file" name="myImage" accept=".png,.gif,.jpg" placeholder="点击修改头像"
-                               onChange={onSavePathClick}/>
+                        <label htmlFor="photo" className="left">头  像：</label>
+                        <input type="file" name="myImage" accept=".png,.gif,.jpg" onChange={onSavePathClick}/>
                         <br />
-                        <label htmlFor="sex">性别：</label>
+                        <label htmlFor="sex" className="left">性  别：</label>
                         <input onChange={onChange} value={sex} type="text" name="sex" id="sex"/>
                         <br/>
-                        <label htmlFor="emailAddress">邮箱地址：</label>
+                        <label htmlFor="emailAddress" className="left">邮箱地址：</label>
                         <input onChange={onChange} value={email} type="text" name="emailAddress" id="emailAddress"/>
                         <br />
-                        <label htmlFor="intro">个人简介：</label>
-                        <input onChange={onChange} value={intro} type="text" name="intro" id="intro"/>
+                        <label htmlFor="intro" className="left">个人简介：</label>
+                        <input onChange={onChange} value={intro} type="textArea" name="intro" id="intro"/>
+                        <label></label>
                         <input id={id} type="button" value="提交" onClick={onClickFixInfo}/>
                     </form>
                 </div>

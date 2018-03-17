@@ -7,16 +7,12 @@ const taskSQL=require('../databases/taskSQL');
 const processSQL=require('../databases/processSQL');
 const db=require('../databases/connect');
 router.get('/taskList',(req,res)=>{
-    let all={};
-    // let my_tasks=[];
-    all.name=req.session.onlineUsr.name;
-    // all.myTasks=[];
-    let t=[];
-    db.query(taskSQL.getMyTasks,all.name,(err,myTasks)=>{
+    const name=req.session.onlineUsr.name;
+    db.query(taskSQL.getMyTasks,name,(err,myTasks)=>{
         if(err){
             console.log(err);
         }
-        // all.myTasks=myTasks;
+        let t=[];
         myTasks.map((task)=>{
             db.query(processSQL.getPerson,task.task_id,(err,person)=>{
                 if(err){
@@ -24,17 +20,13 @@ router.get('/taskList',(req,res)=>{
                 }
                 else{
                     task.count=person.length;
-                    // console.log(task.count);
-                    console.log(task);
-                    console.log("#########");
                     t.push(task);
-                    console.log("tttttt");
-                    // console.log(t);
+                    if(t.length===myTasks.length){
+                        res.json(t);
+                    }
                 }
             });
         });
     });
-    console.log(t);
-    res.json({name:all.name,myTasks:t});
 });
 module.exports=router;

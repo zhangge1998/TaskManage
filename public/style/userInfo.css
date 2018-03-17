@@ -7,35 +7,37 @@ body{
 }
 
 .overlay{
-    position: relative;
-    margin-top: 0;
-    top:100px;
-    /*left:10%;*/
+    width:300px;
+    height:300px;
+    position: absolute;
+    top:50%;
+    left:50%;
+    padding:10px 50px;
+    transform: translate(-50%,-50%);
+    border: 2px solid pink;
+    border-radius: 20px;
 }
-/*.overlay tr{*/
-    /*height:35px;*/
-    /*border-bottom: 1px solid #b8b8b8;*/
-/*}*/
-/*.overlay td{*/
-    /*width:200px;*/
-    /*padding: 10px 0;*/
-    /*text-align: center;*/
-/*}*/
-.overlay input{
-    line-height: 25px;
+.overlay form{
+    width:300px;
+    height: 400px;
+}
+form input{
+    height: 25px;
+    float: right;
     display: inline-block;
-    margin: 5px 5px;
+    margin-bottom: 10px;
 }
-/*.tips{*/
-    /*display: none;*/
-/*}*/
-.top-line img{
-    width:80px;
-    height:80px;
+
+form label{
+    width:30%;
+    float: left;
+    padding: 8px 0 5px 0;
+}
+
+#u-img{
+    width:100px;
+    height:100px;
     border-radius: 100%;
+    border:1px solid black;
 }
-button{
-    padding: 5px;
-    width: 50px;
-    height:30px;
-}
+

@@ -5,9 +5,9 @@ import React from 'react'
 import '../style/header.css'
 import PropTypes from 'prop-types';
 export default class Header extends React.Component{
-    // componentDidMount(){
-    //     this.props.UserInfo();
-    // }
+    componentDidMount(){
+        this.props.UserInfo();
+    }
     display(){
         var menu=document.getElementById('show');
         menu.style.display='block';
@@ -16,9 +16,12 @@ export default class Header extends React.Component{
         var menu=document.getElementById('show');
         menu.style.display='none';
     }
+    // componentDidMount(){
+    //     this.props.UserInfo();
+    // }
     render() {
         const {userInfo,myHome,setting,onIndex,logOut} = this.props;
-        // console.log(this.props);
+        console.log(this.props);
         // console.log('1');
         // if(userInfo===undefined||userInfo===null){
         //     return (
@@ -45,8 +48,8 @@ export default class Header extends React.Component{
                     <input id="search" type="text" autoComplete="off" placeholder="搜索"/>
                     <div id="user">
                         <div className="dropDown"  onMouseOver={this.display.bind(this)} onMouseOut={this.hidden.bind(this)}>
-                            <span>哈哈</span>
-                            <img id="headImage" src="../images/photo.jpg"/>
+                            <span>{userInfo.user_no}</span>
+                            <img id="headImage" src={userInfo.head_path}/>
                             <img id="down" src="../images/down.jpg"/>
                             <ul className="dropDown-menu"  id="show" style={{'display':'none'}}>
                                 <li onClick={myHome}>我的主页</li>

@@ -10,9 +10,7 @@ export default store=>next=>action=>{
                     console.log(err);
                 }
                 else{
-                    const data=JSON.parse(res.text);
-                    console.log(data);
-                    next({type:'MY_TASKS',info:data})
+                    next({type:'MY_TASKS',info:res.body})
                 }
             });
     }

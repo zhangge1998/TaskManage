@@ -110,9 +110,9 @@ a,body{
     height:100px;
     border-radius: 100%;
 }
-.left{
-    margin: 0 50px 0 100px;
-}
+/*.left{*/
+    /*margin: 0 50px 0 100px;*/
+/*}*/
 
 #user span{
     font-size: 20px;

@@ -5,7 +5,6 @@ import TaskItemPanel from '../component/taskItemPanel'
 import {connect} from 'react-redux'
 const mapStateToProps=(state)=> {
     return{
-        name:state.task.name,
         myTasks:state.task.myTasks
     };
 };

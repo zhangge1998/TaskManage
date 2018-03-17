@@ -34,7 +34,7 @@ export default class TaskItemPanel extends React.Component {
         this.props.getTasks();
     }
     render() {
-        const {name,myTasks}=this.props;
+        const {myTasks}=this.props;
         console.log(this.props);
         // console.log(taskInfo.myTasks);
         // let Tasks=taskInfo.myTasks;
@@ -48,8 +48,8 @@ export default class TaskItemPanel extends React.Component {
         }
         else {
             myTasks.forEach(task => {
-                items.push(<TaskItem key={task.task_id} maker={name} name={task.task_name} intro={task.task_introduction}
-                                     makerTime={task.task_time}/>);
+                items.push(<TaskItem key={task.task_id} maker={task.task_maker} name={task.task_name} intro={task.task_introduction}
+                                     makerTime={task.task_time} count={task.count}/>);
             })
         }
         return (

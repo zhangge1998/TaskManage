@@ -2475,7 +2475,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var mapStateToProps = function mapStateToProps(state) {
     return {
-        // userInfo:state.userInfo.list
+        userInfo: state.userInfo.list
     };
 }; /**
     * Created by ubuntu on 3/8/18.
@@ -2483,9 +2483,9 @@ var mapStateToProps = function mapStateToProps(state) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     return {
-        // UserInfo: ()=> {
-        //     dispatch({type: "USER_INFO"})
-        // },
+        UserInfo: function UserInfo() {
+            dispatch({ type: "USER_INFO" });
+        },
         myHome: function myHome() {
             console.log('我的主页');
             dispatch({ type: 'MY_HOME'
@@ -17591,11 +17591,11 @@ Object.defineProperty(exports, "__esModule", {
  * Created by ubuntu on 3/7/18.
  */
 exports.default = function () {
-    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { list: [] };
+    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { list: {} };
     var action = arguments[1];
 
     if (action.type === 'ALL_USER_INFO') {
-        return { list: action.data };
+        return { list: action.userInfo[0] };
     }
     return state;
 };
@@ -17615,11 +17615,11 @@ Object.defineProperty(exports, "__esModule", {
  * Created by ubuntu on 3/7/18.
  */
 exports.default = function () {
-    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { name: '', myTasks: [] };
+    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { myTasks: [] };
     var action = arguments[1];
 
     if (action.type == 'MY_TASKS') {
-        return { name: action.info.name, myTasks: action.info.myTasks };
+        return { myTasks: action.info };
     }
     return state;
 };
@@ -18846,15 +18846,19 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.default = function (store) {
     return function (next) {
         return function (action) {
-            // if(action.type==='USER_INFO'){
-            //     request.get('./userInfo')
-            //         .end((err,res)=>{
-            //             if(err){
-            //                 console.log(err);
-            //             }
-            //             next({type:"ALL_USER_INFO",data:res.body})
-            //         })
-            // }
+            if (action.type === 'USER_INFO') {
+                _superagent2.default.get('./userInfo').end(function (err, res) {
+                    if (err) {
+                        console.log(err);
+                    }
+                    console.log('111000');
+                    // const data=JSON.parse(res.text);
+                    // console.log(data);
+
+                    console.log(res.body);
+                    next({ type: "ALL_USER_INFO", userInfo: res.body });
+                });
+            }
             if (action.type === 'MY_HOME') {
                 console.log('222');
                 window.location.href = '/myHome';
@@ -18953,9 +18957,7 @@ exports.default = function (store) {
                     if (err) {
                         console.log(err);
                     } else {
-                        var data = JSON.parse(res.text);
-                        console.log(data);
-                        next({ type: 'MY_TASKS', info: data });
+                        next({ type: 'MY_TASKS', info: res.body });
                     }
                 });
             } else next(action);
@@ -19009,11 +19011,12 @@ var Header = function (_React$Component) {
     }
 
     _createClass(Header, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            this.props.UserInfo();
+        }
+    }, {
         key: 'display',
-
-        // componentDidMount(){
-        //     this.props.UserInfo();
-        // }
         value: function display() {
             var menu = document.getElementById('show');
             menu.style.display = 'block';
@@ -19024,6 +19027,10 @@ var Header = function (_React$Component) {
             var menu = document.getElementById('show');
             menu.style.display = 'none';
         }
+        // componentDidMount(){
+        //     this.props.UserInfo();
+        // }
+
     }, {
         key: 'render',
         value: function render() {
@@ -19033,7 +19040,8 @@ var Header = function (_React$Component) {
                 setting = _props.setting,
                 onIndex = _props.onIndex,
                 logOut = _props.logOut;
-            // console.log(this.props);
+
+            console.log(this.props);
             // console.log('1');
             // if(userInfo===undefined||userInfo===null){
             //     return (
@@ -19052,7 +19060,6 @@ var Header = function (_React$Component) {
             //     )
             // }
             // else{
-
             return _react2.default.createElement(
                 'div',
                 { className: 'nav' },
@@ -19075,9 +19082,9 @@ var Header = function (_React$Component) {
                             _react2.default.createElement(
                                 'span',
                                 null,
-                                '\u54C8\u54C8'
+                                userInfo.user_no
                             ),
-                            _react2.default.createElement('img', { id: 'headImage', src: '../images/photo.jpg' }),
+                            _react2.default.createElement('img', { id: 'headImage', src: userInfo.head_path }),
                             _react2.default.createElement('img', { id: 'down', src: '../images/down.jpg' }),
                             _react2.default.createElement(
                                 'ul',
@@ -19177,7 +19184,7 @@ exports = module.exports = __webpack_require__(11)(false);
 
 
 // module
-exports.push([module.i, "*{\n    margin: 0;\n    padding: 0;\n}\nbody{\n    background-color: #fff;\n}\na,body{\n    color: #333;\n    text-decoration: none;\n}\n#logo{\n    width:100px;\n    height:60px;\n    float: left;\n}\n#home{\n    font-size: 24px;\n    margin-left: 50px;\n    left:20px;\n}\n#search{\n    padding: 0 40px 0 20px;\n    height:38px;\n    font-size: 14px;\n    border: 1px solid #eee;\n    border-radius: 40px;\n    background: #eee;\n    margin: 10px 150px;\n}\n\n.nav{\n    width:100%;\n    height:63px;\n    z-index: 9998;\n    background-color: #fff;\n    border:1px solid #f0f0f0;\n    margin: 0 auto;\n    position: fixed;\n    right:0;\n    left:0;\n}\n.header{\n    height:63px;\n    padding: 3px 20px 0px 10px;\n}\n\n.mm{\n    vertical-align: middle;\n}\n#user{\n    float: right;\n    /*position: ;*/\n}\n\n#headImage{\n    width:50px;\n    height:50px;\n    top:2px;\n    border-radius: 100%;\n    border: solid 1px;\n    vertical-align: middle;\n    display: inline-block;\n}\n\n#down{\n    width:12px;\n    height:9px;\n    margin-left: 10px;\n}\n.dropDown-menu {\n    width:120px;\n    background-color: #fff;\n    border: 1px solid rgba(0,0,0,.15);\n    line-height: 20px;\n    font-size: 14px;\n    /*display: none;*/\n    list-style: none;\n    margin: 9px 0;\n    box-shadow: 0 6px 12px rgba(0,0,0,.175);\n}\n.dropDown-menu a{\n    padding: 10px 20px;\n    line-height: 30px;\n}\n.overlay{\n    width:400px;\n    margin-top: 50px;\n    margin-left: auto;\n    margin-right: auto;\n    /*display: none;*/\n}\n.overlay tr{\n    height:35px;\n    border-bottom: 1px solid #b8b8b8;\n}\n.overlay td{\n    width:200px;\n    padding: 10px 0;\n    text-align: center;\n}\n.overlay input{\n    line-height: 25px;\n}\n.tips{\n    display: none;\n}\n.top-line img{\n    width:100px;\n    height:100px;\n    border-radius: 100%;\n}\n.left{\n    margin: 0 50px 0 100px;\n}\n\n#user span{\n    font-size: 20px;\n    margin: 5px;\n}\n", ""]);
+exports.push([module.i, "*{\n    margin: 0;\n    padding: 0;\n}\nbody{\n    background-color: #fff;\n}\na,body{\n    color: #333;\n    text-decoration: none;\n}\n#logo{\n    width:100px;\n    height:60px;\n    float: left;\n}\n#home{\n    font-size: 24px;\n    margin-left: 50px;\n    left:20px;\n}\n#search{\n    padding: 0 40px 0 20px;\n    height:38px;\n    font-size: 14px;\n    border: 1px solid #eee;\n    border-radius: 40px;\n    background: #eee;\n    margin: 10px 150px;\n}\n\n.nav{\n    width:100%;\n    height:63px;\n    z-index: 9998;\n    background-color: #fff;\n    border:1px solid #f0f0f0;\n    margin: 0 auto;\n    position: fixed;\n    right:0;\n    left:0;\n}\n.header{\n    height:63px;\n    padding: 3px 20px 0px 10px;\n}\n\n.mm{\n    vertical-align: middle;\n}\n#user{\n    float: right;\n    /*position: ;*/\n}\n\n#headImage{\n    width:50px;\n    height:50px;\n    top:2px;\n    border-radius: 100%;\n    border: solid 1px;\n    vertical-align: middle;\n    display: inline-block;\n}\n\n#down{\n    width:12px;\n    height:9px;\n    margin-left: 10px;\n}\n.dropDown-menu {\n    width:120px;\n    background-color: #fff;\n    border: 1px solid rgba(0,0,0,.15);\n    line-height: 20px;\n    font-size: 14px;\n    /*display: none;*/\n    list-style: none;\n    margin: 9px 0;\n    box-shadow: 0 6px 12px rgba(0,0,0,.175);\n}\n.dropDown-menu a{\n    padding: 10px 20px;\n    line-height: 30px;\n}\n.overlay{\n    width:400px;\n    margin-top: 50px;\n    margin-left: auto;\n    margin-right: auto;\n    /*display: none;*/\n}\n.overlay tr{\n    height:35px;\n    border-bottom: 1px solid #b8b8b8;\n}\n.overlay td{\n    width:200px;\n    padding: 10px 0;\n    text-align: center;\n}\n.overlay input{\n    line-height: 25px;\n}\n.tips{\n    display: none;\n}\n.top-line img{\n    width:100px;\n    height:100px;\n    border-radius: 100%;\n}\n/*.left{*/\n    /*margin: 0 50px 0 100px;*/\n/*}*/\n\n#user span{\n    font-size: 20px;\n    margin: 5px;\n}\n", ""]);
 
 // exports
 
@@ -19702,7 +19709,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  */
 var mapStateToProps = function mapStateToProps(state) {
     return {
-        name: state.task.name,
         myTasks: state.task.myTasks
     };
 };
@@ -19837,9 +19843,7 @@ var TaskItemPanel = function (_React$Component) {
     }, {
         key: 'render',
         value: function render() {
-            var _props = this.props,
-                name = _props.name,
-                myTasks = _props.myTasks;
+            var myTasks = this.props.myTasks;
 
             console.log(this.props);
             // console.log(taskInfo.myTasks);
@@ -19857,8 +19861,8 @@ var TaskItemPanel = function (_React$Component) {
                 ));
             } else {
                 myTasks.forEach(function (task) {
-                    items.push(_react2.default.createElement(TaskItem, { key: task.task_id, maker: name, name: task.task_name, intro: task.task_introduction,
-                        makerTime: task.task_time }));
+                    items.push(_react2.default.createElement(TaskItem, { key: task.task_id, maker: task.task_maker, name: task.task_name, intro: task.task_introduction,
+                        makerTime: task.task_time, count: task.count }));
                 });
             }
             return _react2.default.createElement(
@@ -20035,8 +20039,6 @@ var UserInfoEdit = function (_React$Component) {
                 sex = _props.sex,
                 intro = _props.intro;
 
-            console.log(this.props);
-            console.log('11111');
             return _react2.default.createElement(
                 'div',
                 null,
@@ -20049,43 +20051,46 @@ var UserInfoEdit = function (_React$Component) {
                         null,
                         _react2.default.createElement(
                             'label',
-                            { htmlFor: 'name' },
+                            { htmlFor: 'name', className: 'left' },
                             '\u7528\u6237\u540D\uFF1A'
                         ),
                         _react2.default.createElement('input', { onChange: onChange, value: username, type: 'text', name: 'name', id: 'name' }),
                         _react2.default.createElement('br', null),
                         _react2.default.createElement(
                             'label',
-                            { htmlFor: 'password' },
-                            '\u5BC6\u7801\uFF1A'
+                            { htmlFor: 'password', className: 'left' },
+                            '\u5BC6  \u7801\uFF1A'
                         ),
                         _react2.default.createElement('input', { onChange: onChange, value: password, type: 'password', name: 'password', id: 'password' }),
                         _react2.default.createElement('br', null),
-                        _react2.default.createElement('img', { id: 'image', src: headPath }),
-                        _react2.default.createElement('br', null),
-                        _react2.default.createElement('input', { type: 'file', name: 'myImage', accept: '.png,.gif,.jpg', placeholder: '\u70B9\u51FB\u4FEE\u6539\u5934\u50CF',
-                            onChange: onSavePathClick }),
+                        _react2.default.createElement(
+                            'label',
+                            { htmlFor: 'photo', className: 'left' },
+                            '\u5934  \u50CF\uFF1A'
+                        ),
+                        _react2.default.createElement('input', { type: 'file', name: 'myImage', accept: '.png,.gif,.jpg', onChange: onSavePathClick }),
                         _react2.default.createElement('br', null),
                         _react2.default.createElement(
                             'label',
-                            { htmlFor: 'sex' },
-                            '\u6027\u522B\uFF1A'
+                            { htmlFor: 'sex', className: 'left' },
+                            '\u6027  \u522B\uFF1A'
                         ),
                         _react2.default.createElement('input', { onChange: onChange, value: sex, type: 'text', name: 'sex', id: 'sex' }),
                         _react2.default.createElement('br', null),
                         _react2.default.createElement(
                             'label',
-                            { htmlFor: 'emailAddress' },
+                            { htmlFor: 'emailAddress', className: 'left' },
                             '\u90AE\u7BB1\u5730\u5740\uFF1A'
                         ),
                         _react2.default.createElement('input', { onChange: onChange, value: email, type: 'text', name: 'emailAddress', id: 'emailAddress' }),
                         _react2.default.createElement('br', null),
                         _react2.default.createElement(
                             'label',
-                            { htmlFor: 'intro' },
+                            { htmlFor: 'intro', className: 'left' },
                             '\u4E2A\u4EBA\u7B80\u4ECB\uFF1A'
                         ),
-                        _react2.default.createElement('input', { onChange: onChange, value: intro, type: 'text', name: 'intro', id: 'intro' }),
+                        _react2.default.createElement('input', { onChange: onChange, value: intro, type: 'textArea', name: 'intro', id: 'intro' }),
+                        _react2.default.createElement('label', null),
                         _react2.default.createElement('input', { id: id, type: 'button', value: '\u63D0\u4EA4', onClick: onClickFixInfo })
                     )
                 )
@@ -20206,7 +20211,7 @@ exports = module.exports = __webpack_require__(11)(false);
 
 
 // module
-exports.push([module.i, "*{\n    margin: 0;\n    padding: 0;\n}\nbody{\n    background-color: #fff;\n}\n\n.overlay{\n    position: relative;\n    margin-top: 0;\n    top:100px;\n    /*left:10%;*/\n}\n/*.overlay tr{*/\n    /*height:35px;*/\n    /*border-bottom: 1px solid #b8b8b8;*/\n/*}*/\n/*.overlay td{*/\n    /*width:200px;*/\n    /*padding: 10px 0;*/\n    /*text-align: center;*/\n/*}*/\n.overlay input{\n    line-height: 25px;\n    display: inline-block;\n    margin: 5px 5px;\n}\n/*.tips{*/\n    /*display: none;*/\n/*}*/\n.top-line img{\n    width:80px;\n    height:80px;\n    border-radius: 100%;\n}\nbutton{\n    padding: 5px;\n    width: 50px;\n    height:30px;\n}", ""]);
+exports.push([module.i, "*{\n    margin: 0;\n    padding: 0;\n}\nbody{\n    background-color: #fff;\n}\n\n.overlay{\n    width:300px;\n    height:300px;\n    position: absolute;\n    top:50%;\n    left:50%;\n    padding:10px 50px;\n    transform: translate(-50%,-50%);\n    border: 2px solid pink;\n    border-radius: 20px;\n}\n.overlay form{\n    width:300px;\n    height: 400px;\n}\nform input{\n    height: 25px;\n    float: right;\n    display: inline-block;\n    margin-bottom: 10px;\n}\n\nform label{\n    width:30%;\n    float: left;\n    padding: 8px 0 5px 0;\n}\n\n#u-img{\n    width:100px;\n    height:100px;\n    border-radius: 100%;\n    border:1px solid black;\n}\n\n", ""]);
 
 // exports
 
