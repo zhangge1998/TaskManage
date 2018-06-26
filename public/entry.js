@@ -11,6 +11,7 @@ import middlewareUserInfoEdit from '../public/middlewares/userInfoEdit';
 import middlewareHeader from '../public/middlewares/header'
 import middlewareSignin from '../public/middlewares/login'
 import middlewareTasks from '../public/middlewares/taskItemPanel'
+import middlewareTaskInfo from '../public/middlewares/taskDetail'
 // import middlewareHome from '../public/middlewares/homePage';
 // import middlewareActorTaskPage from '../public/middlewares/actorTaskPage';
 
@@ -22,7 +23,7 @@ import UserInfoEdit from '../public/container/userInfoEdit';
 import SignIn from '../public/container/login'
 
 //创建store
-const createMiddlewareStore = applyMiddleware(middlewareSignin, middlewareHeader,middlewareTasks)(createStore);
+const createMiddlewareStore = applyMiddleware(middlewareSignin, middlewareHeader,middlewareTasks, middlewareTaskInfo)(createStore);
 let store = createMiddlewareStore(reducers);
 
 // let store;

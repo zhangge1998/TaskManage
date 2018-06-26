@@ -3,7 +3,7 @@
  */
 export default (state={},action)=>{
     if(action.type=='SHOW_TASKINFO'){
-        return {list:action.data}
+        return {info:action.data}
     }
     return state;
 }

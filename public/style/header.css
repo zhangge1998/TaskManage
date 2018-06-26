@@ -27,6 +27,7 @@ a,body{
     border-radius: 40px;
     background: #eee;
     margin: 10px 150px;
+    outline: none;
 }
 
 .nav{

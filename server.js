@@ -11,6 +11,7 @@ const app = new express();
 const login = require('./server/routers/login');
 const header= require('./server/routers/header')
 const  taskItemPanel= require('./server/routers/taskItemPanel');
+const  taskDetail= require('./server/routers/taskDetail');
 // const home = require('./server/routers/home');
 // const searchTasks = require('./server/routers/searchTasks');
 // const takePartInTasks =  require('./server/routers/takePartInTasks');
@@ -46,6 +47,7 @@ app.use(express.static(__dirname+'/public'));
 app.use('/',login);
 app.use('/',taskItemPanel);
 app.use('/',header);
+app.use('/',taskDetail);
 // app.use('/',logup);
 // app.use('/',home);
 // app.use('/',searchTasks);

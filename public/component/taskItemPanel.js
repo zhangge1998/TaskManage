@@ -35,7 +35,7 @@ export default class TaskItemPanel extends React.Component {
     }
     render() {
         const {myTasks}=this.props;
-        console.log(this.props);
+        console.log(myTasks);
         // console.log(taskInfo.myTasks);
         // let Tasks=taskInfo.myTasks;
         let items = [];
