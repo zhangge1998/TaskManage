@@ -21,7 +21,6 @@ export default class Header extends React.Component{
     // }
     render() {
         const {userInfo,myHome,setting,onIndex,logOut} = this.props;
-        console.log(this.props);
         // console.log('1');
         // if(userInfo===undefined||userInfo===null){
         //     return (

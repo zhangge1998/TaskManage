@@ -9,11 +9,8 @@ export default store=>next=>action=>{
                 if(err){
                     console.log(err);
                 }
-                console.log('111000');
                 // const data=JSON.parse(res.text);
                 // console.log(data);
-
-                console.log(res.body);
                 next({type:"ALL_USER_INFO",userInfo:res.body})
             })
     }
