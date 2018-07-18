@@ -4,5 +4,6 @@ const taskSQL = {
     getTaskId:'select task_id from task where task_name=?',
     addTask:'insert into task (task_name,task_maker,task_introduction,task_time) values (?,?,?,?)',
     getMyTasks:'select * from task where task_maker=?',
+    deleteTask:'delete from task where task_id=?'
 };
 module.exports = taskSQL;

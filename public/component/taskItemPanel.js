@@ -3,14 +3,14 @@ import '../style/task.css'
 import Header from '../container/header';
 import {Route} from 'react-router-dom';
 import PropTypes from 'prop-types'
+import index from "../reducers";
 class TaskItem extends React.Component{
 
     //delete
     deleteTask() {
-        this.props.handleDelete(this.props.id);
+        this.props.delete(this.props.id);
     }
     render(){
-        console.log(this.props);
         return (
             <div className="item">
                 <img id="userimage" src="../images/photo.jpg"/>
@@ -38,9 +38,6 @@ export default class TaskItemPanel extends React.Component {
     componentDidMount(){
         this.props.getTasks();
     }
-    handleDelete(key){
-        console.log(key);
-    }
     render() {
         const {myTasks}=this.props;
         let items = [];
@@ -52,10 +49,9 @@ export default class TaskItemPanel extends React.Component {
             )
         }
         else {
-            myTasks.map((task) => {
-                let index = task.task_id;
-                items.push(<TaskItem key={index} id={task.task_id} maker={task.task_maker} name={task.task_name} intro={task.task_introduction}
-                                     makerTime={task.task_time} count={task.count} handleDelete={this.handleDelete.bind(this)}/>);
+            myTasks.forEach(task => {
+                items.push(<TaskItem key={task.task_id} id={task.task_id} maker={task.task_maker} name={task.task_name} intro={task.task_introduction}
+                                     makerTime={task.task_time} count={task.count} delete={this.props.deleteTask}/>);
             })
         }
         return (

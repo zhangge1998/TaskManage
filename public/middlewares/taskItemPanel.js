@@ -14,6 +14,18 @@ export default store=>next=>action=>{
                 }
             });
     }
+    if(action.type == 'DELETE_TASK'){
+        request.post('/delete')
+            .send(action)
+            .end((err, res) => {
+                if(err){
+                    console.log(err);
+                }else{
+                    console.log(JSON.parse(res.text));
+                    window.location.href = '/myHome';
+                }
+            });
+    }
     else
         next(action);
 

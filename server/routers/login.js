@@ -7,7 +7,6 @@ const usrData = require('../databases/usrSQL');
 router.post('/signin', (req, res) => {
     const name = req.body.usrInfor.name;
     const psw = req.body.usrInfor.psw;
-    console.log(name);
     let data = {};
     database.query(usrData.getUsr,name,function (err, result) {
        // console.log(result);

@@ -1,4 +1,4 @@
-SET FOREIGN_KEY_CHECKS=0;
+
 -- ----------------------------
 -- Table structure for userInformation
 -- ----------------------------
@@ -6,9 +6,9 @@ DROP TABLE IF EXISTS `userInformation`;
 CREATE TABLE `userInformation` (
   `user_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_no` varchar(20) NOT NULL,
-  `user_sex` varchar(20) NOT NULL DEFAULT '男',
+  `user_sex` varchar(20) NOT NULL DEFAULT '1' COMMENT '类型：1是男，2为女',
   `user_email` varchar(100) DEFAULT NULL,
-  `user_intro` varchar(200) DEFAULT '我是一条鱼',
+  `user_intro` varchar(200),
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `user_no` (`user_no`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COMMENT='用户表';
@@ -93,7 +93,7 @@ CREATE TABLE `application` (
   `infor` varchar(100) DEFAULT NULL,
   `submit_time` datetime DEFAULT NULL,
   PRIMARY KEY (`apply_id`),
-  FOREIGN KEY (`task_id`) REFERENCES `task` (`task_id`),
+  FOREIGN KEY (`task_id`) REFERENCES `task` (`task_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   FOREIGN KEY (`user_id`) REFERENCES `userInformation` (`user_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='申请状态表';
 
@@ -119,15 +119,15 @@ CREATE TABLE `process` (
   `process_4` tinyint(4) NOT NULL DEFAULT '-1' COMMENT '类型：0为待确认，1是完成，-1为未提交',
   `process_5` tinyint(4) NOT NULL DEFAULT '-1' COMMENT '类型：0为待确认，1是完成，-1为未提交',
   PRIMARY KEY (`task_id`,`user_no`),
-  FOREIGN KEY (`task_id`) REFERENCES `task` (`task_id`),
-  FOREIGN KEY (`user_no`) REFERENCES `userInformation` (`user_no`) ON DELETE CASCADE ON UPDATE CASCADE
+  FOREIGN KEY (`task_id`) REFERENCES `task` (`task_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (`user_no`) REFERENCES `user` (`user_no`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='个人进度表';
 -- ----------------------------
 -- Records of application
 -- ----------------------------
 INSERT INTO `process` VALUES ('1', '阿一','-1','-1','-1','-1','-1');
 INSERT INTO `process` VALUES ('1', '阿二','-1','-1','-1','-1','-1');
-INSERT INTO `process` VALUES ('2', '阿三','-1','-1','-1','-1','-1');
+INSERT INTO `process` VALUES ('2', '哈哈','-1','-1','-1','-1','-1');
 INSERT INTO `process` VALUES ('3', '阿四','-1','-1','-1','-1','-1');
 
 

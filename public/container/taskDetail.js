@@ -22,7 +22,8 @@ const mapDispatchToProps=(dispatch)=>({
             dispatch({
                 type:'getTaskInfo'
             });
-        }
+        },
+
     })
 
 
