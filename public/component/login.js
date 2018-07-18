@@ -27,8 +27,8 @@ class Login extends Component{
                      记住密码
                  </div>
                  <div>
-                     <button onClick={clickSignIn}>登录</button>
-                     <button onClick={clickSignUp}>注册</button>
+                     <button className="login" onClick={clickSignIn}>登录</button>
+                     <button className="login" onClick={clickSignUp}>注册</button>
                  </div>
              </div>
          </div>

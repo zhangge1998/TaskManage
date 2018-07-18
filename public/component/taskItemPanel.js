@@ -1,5 +1,6 @@
 import React from 'react'
-import '../style/task.css'
+import '../style/task.css';
+import '../style/add.css';
 import Header from '../container/header';
 import {Route} from 'react-router-dom';
 import PropTypes from 'prop-types'
@@ -31,7 +32,17 @@ class TaskItem extends React.Component{
             </div>
         )
     }
+}
 
+class AddTask extends React.Component{
+    render(){
+        return(
+            <div id="addTask">
+                <img id="add" src="../images/add1.jpeg"/>
+                <h3 id="word">添加任务</h3>
+            </div>
+        )
+    }
 }
 
 export default class TaskItemPanel extends React.Component {
@@ -57,6 +68,7 @@ export default class TaskItemPanel extends React.Component {
         return (
             <div>
                 <Route path="/" component={Header}/>
+                <AddTask/>
                 <div className="itemPanel">
                     {items}
                 </div>

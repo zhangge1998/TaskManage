@@ -1,0 +1,20 @@
+#addTask{
+    position: absolute;
+    width: 150px;
+    height: 50px;
+    left: 1000px;
+    top: 200px;
+    padding: 8px;
+    box-sizing: border-box;
+    border-radius: 15px;
+    border: 2px solid #afafaf;
+}
+#add{
+    width:30px;
+    height: 30px;
+}
+#word{
+    position: absolute;
+    left: 50px;
+    top: 7px;
+}
