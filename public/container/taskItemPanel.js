@@ -19,6 +19,11 @@ const mapDispatchToProps=(dispatch)=>({
             type:'DELETE_TASK',
             info:key
         })
+    },
+    addForm:()=>{
+        dispatch({
+            type:'ADD_FORM',
+        })
     }
     })
 ;

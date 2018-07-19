@@ -12,6 +12,7 @@ import middlewareHeader from '../public/middlewares/header'
 import middlewareSignin from '../public/middlewares/login'
 import middlewareTasks from '../public/middlewares/taskItemPanel'
 import middlewareTaskInfo from '../public/middlewares/taskDetail'
+import middlewareAdd from '../public/middlewares/addTask'
 // import middlewareHome from '../public/middlewares/homePage';
 // import middlewareActorTaskPage from '../public/middlewares/actorTaskPage';
 
@@ -20,10 +21,10 @@ import Header from '../public/container/header';
 import TaskDetail from '../public/container/taskDetail';
 import TaskItemPanel from '../public/container/taskItemPanel';
 import UserInfoEdit from '../public/container/userInfoEdit';
-import SignIn from '../public/container/login'
-
+import SignIn from '../public/container/login';
+import AddTask from '../public/container/addTask';
 //创建store
-const createMiddlewareStore = applyMiddleware(middlewareSignin, middlewareHeader,middlewareTasks, middlewareTaskInfo)(createStore);
+const createMiddlewareStore = applyMiddleware(middlewareSignin, middlewareHeader,middlewareTasks, middlewareTaskInfo, middlewareAdd)(createStore);
 let store = createMiddlewareStore(reducers);
 
 // let store;
@@ -50,10 +51,10 @@ render(
                 <Route path='/login' component={SignIn}/>
                 <Route path='/task' component={TaskDetail}/>
                 <Route path='/myHome' component={TaskItemPanel}/>
+                <Route path='/addTAsk' component={AddTask}/>
                 <Route path='/userInfoEdit' component={UserInfoEdit}/>
             </div>
         </BrowserRouter>
-
     </Provider>,
     document.getElementById('root')
 );

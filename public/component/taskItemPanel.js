@@ -6,7 +6,6 @@ import {Route} from 'react-router-dom';
 import PropTypes from 'prop-types'
 import index from "../reducers";
 class TaskItem extends React.Component{
-
     //delete
     deleteTask() {
         this.props.delete(this.props.id);
@@ -33,18 +32,16 @@ class TaskItem extends React.Component{
         )
     }
 }
-
 class AddTask extends React.Component{
     render(){
         return(
-            <div id="addTask">
+            <div id="addTask"  onClick={this.props.addForm}>
                 <img id="add" src="../images/add1.jpeg"/>
                 <h3 id="word">添加任务</h3>
             </div>
         )
     }
 }
-
 export default class TaskItemPanel extends React.Component {
     componentDidMount(){
         this.props.getTasks();
@@ -68,7 +65,7 @@ export default class TaskItemPanel extends React.Component {
         return (
             <div>
                 <Route path="/" component={Header}/>
-                <AddTask/>
+                <AddTask addForm={this.props.addForm.bind(this)}/>
                 <div className="itemPanel">
                     {items}
                 </div>

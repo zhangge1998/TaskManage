@@ -26,6 +26,9 @@ export default store=>next=>action=>{
                 }
             });
     }
+    if(action.type == 'ADD_FORM'){
+        window.location.href = '/addTask';
+    }
     else
         next(action);
 

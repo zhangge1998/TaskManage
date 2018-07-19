@@ -9,9 +9,10 @@ const Store = require('express-mysql-session');
 const app = new express();
 
 const login = require('./server/routers/login');
-const header= require('./server/routers/header')
-const  taskItemPanel= require('./server/routers/taskItemPanel');
-const  taskDetail= require('./server/routers/taskDetail');
+const header = require('./server/routers/header');
+const taskItemPanel = require('./server/routers/taskItemPanel');
+const taskDetail = require('./server/routers/taskDetail');
+const addTask = require('./server/routers/addTask');
 // const home = require('./server/routers/home');
 // const searchTasks = require('./server/routers/searchTasks');
 // const takePartInTasks =  require('./server/routers/takePartInTasks');
@@ -48,6 +49,7 @@ app.use('/',login);
 app.use('/',taskItemPanel);
 app.use('/',header);
 app.use('/',taskDetail);
+app.use('/',addTask);
 // app.use('/',logup);
 // app.use('/',home);
 // app.use('/',searchTasks);

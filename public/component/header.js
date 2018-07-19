@@ -9,11 +9,11 @@ export default class Header extends React.Component{
         this.props.UserInfo();
     }
     display(){
-        var menu=document.getElementById('show');
+        let menu=document.getElementById('show');
         menu.style.display='block';
     }
     hidden(){
-        var menu=document.getElementById('show');
+        let menu=document.getElementById('show');
         menu.style.display='none';
     }
     // componentDidMount(){

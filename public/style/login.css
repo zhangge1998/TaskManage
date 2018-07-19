@@ -38,7 +38,7 @@ body{
     margin: 0 auto;
     margin-top: 15px;
 }
-button .login{
+.login{
     width: 75px;
     height: 35px;
     font-size: 18px;
