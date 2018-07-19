@@ -17,7 +17,7 @@ class TaskItem extends React.Component{
                 <span><a href="#" className="name">{this.props.maker}</a></span>
                 <button id="delete"  onClick={this.deleteTask.bind(this)}>删除</button>
                 <div>
-                    <a style={{'fontSize': '20px'}} href="#">{this.props.name}</a>
+                    <a style={{'fontSize': '20px'}} href="#" onClick={this.props.show.bind(this)}>{this.props.name}</a>
                     <p>简介：{this.props.intro}</p>
                 </div>
                 <ul className="item-footer">
@@ -59,7 +59,7 @@ export default class TaskItemPanel extends React.Component {
         else {
             myTasks.forEach(task => {
                 items.push(<TaskItem key={task.task_id} id={task.task_id} maker={task.task_maker} name={task.task_name} intro={task.task_introduction}
-                                     makerTime={task.task_time} count={task.count} delete={this.props.deleteTask}/>);
+                                     makerTime={task.task_time} count={task.count} delete={this.props.deleteTask} show={this.props.showTask}/>);
             })
         }
         return (
