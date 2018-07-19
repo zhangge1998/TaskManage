@@ -21,14 +21,14 @@ body{
     width:300px;
     height: 400px;
 }
-form input{
+.overlay input{
     height: 25px;
     float: right;
     display: inline-block;
     margin-bottom: 10px;
 }
 
-form label{
+.overlay label{
     width:30%;
     float: left;
     padding: 8px 0 5px 0;
