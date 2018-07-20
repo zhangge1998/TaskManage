@@ -32,7 +32,6 @@ router.get('/taskList',(req,res)=>{
 router.post('/delete',(req, res)=>{
     console.log(req.body);
     const id = req.body.info;
-    console.log('show' + id);
     db.query(taskSQL.deleteTask,id,(err)=>{
         if(err){
             console.log(err);

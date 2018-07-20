@@ -48,6 +48,7 @@ export default class TaskItemPanel extends React.Component {
     }
     render() {
         const {myTasks}=this.props;
+        console.log(this.props);
         let items = [];
         if (myTasks.length === 0) {
             items.push(
