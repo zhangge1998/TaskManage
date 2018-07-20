@@ -13,7 +13,6 @@ router.post('/add', (req, res) => {
     let date = new Date();
     // const time = date.getFullYear();
     const time = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
-    console.log(time);
     const step1 = taskInfo.first;
     const step2 = taskInfo.second;
     const step3 = taskInfo.third;

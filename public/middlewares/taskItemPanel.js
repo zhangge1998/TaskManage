@@ -30,9 +30,21 @@ export default store=>next=>action=>{
         window.location.href = '/addTask';
     }
     if(action.type == 'SHOW_TASK'){
-        window.location.href = '/task';
+        request.post('/detail')
+            .send(action)
+            .end((err, res)=>{
+                if(err){
+                    console.log(err);
+                }else{
+                    // window.location.href = '/task';
+                    console.log(res.body);
+                    next({type:'SHOW_TASKINFO',info:res.body});
+                    // setTimeout(function(){
+                    //     window.location.href = '/task';
+                    // },500)
+                }
+            });
     }
     else
         next(action);
-
 }

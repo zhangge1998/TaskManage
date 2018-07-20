@@ -10,6 +10,9 @@ class TaskItem extends React.Component{
     deleteTask() {
         this.props.delete(this.props.id);
     }
+    showTask(){
+        this.props.show(this.props.id);
+    }
     render(){
         return (
             <div className="item">
@@ -17,7 +20,7 @@ class TaskItem extends React.Component{
                 <span><a href="#" className="name">{this.props.maker}</a></span>
                 <button id="delete"  onClick={this.deleteTask.bind(this)}>删除</button>
                 <div>
-                    <a style={{'fontSize': '20px'}} href="#" onClick={this.props.show.bind(this)}>{this.props.name}</a>
+                    <a style={{'fontSize': '20px'}} href="/task" onClick={this.showTask.bind(this)}>{this.props.name}</a>
                     <p>简介：{this.props.intro}</p>
                 </div>
                 <ul className="item-footer">

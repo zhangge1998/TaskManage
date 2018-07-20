@@ -25,9 +25,10 @@ const mapDispatchToProps=(dispatch)=>({
             type:'ADD_FORM',
         })
     },
-    showTask:()=>{
+    showTask:(key)=>{
         dispatch({
-            type:'SHOW_TASK'
+            type:'SHOW_TASK',
+            id:key
         })
     }
     })

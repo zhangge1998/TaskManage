@@ -23,7 +23,6 @@ router.get('/taskList',(req,res)=>{
             let time = task.task_time.toString();
             let date = new Date(time);
             task.task_time = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() + ' ' + checkTime(date.getHours()) + ':' + checkTime(date.getMinutes()) + ':' + checkTime(date.getSeconds());
-            console.log(task.task_time);
             db.query(processSQL.getPerson,task.task_id,(err,person)=>{
                 if(err){
                     console.log(err);
@@ -47,9 +46,21 @@ router.post('/delete',(req, res)=>{
             console.log(err);
         }
         else{
-            console.log('success');
             res.json({status: 1});
         }
     });
+});
+router.post('/detail',(req,res)=>{
+    console.log(req.body);
+   const id = req.body.id;
+   db.query(taskSQL.getTaskInfo,id,(err,result)=>{
+       if(err){
+           console.log(err);
+       }
+       else{
+           // console.log(result);
+           res.json(result);
+       }
+   })
 });
 module.exports=router;
