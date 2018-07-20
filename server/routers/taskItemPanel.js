@@ -14,6 +14,16 @@ router.get('/taskList',(req,res)=>{
         }
         let t=[];
         myTasks.map((task)=>{
+            function checkTime(i)
+            {
+                if (i<10)
+                {i="0" + i}
+                return i
+            }
+            let time = task.task_time.toString();
+            let date = new Date(time);
+            task.task_time = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() + ' ' + checkTime(date.getHours()) + ':' + checkTime(date.getMinutes()) + ':' + checkTime(date.getSeconds());
+            console.log(task.task_time);
             db.query(processSQL.getPerson,task.task_id,(err,person)=>{
                 if(err){
                     console.log(err);
