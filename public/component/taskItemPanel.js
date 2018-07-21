@@ -1,8 +1,10 @@
-import React from 'react'
+import React from 'react';
 import '../style/task.css';
 import '../style/add.css';
 import Header from '../container/header';
-import {Route} from 'react-router-dom';
+import TaskDetail from '../container/taskDetail';
+import {Route,Link} from 'react-router-dom';
+// import {Link} from 'react-router';
 import PropTypes from 'prop-types'
 import index from "../reducers";
 class TaskItem extends React.Component{
@@ -14,24 +16,34 @@ class TaskItem extends React.Component{
         this.props.show(this.props.id);
     }
     render(){
+        let data = this.props.task;
+        let path = {
+            pathname:'/task',
+            state:data,
+        };
         return (
-            <div className="item">
-                <img id="userimage" src="../images/photo.jpg"/>
-                <span><a href="#" className="name">{this.props.maker}</a></span>
-                <button id="delete"  onClick={this.deleteTask.bind(this)}>删除</button>
-                <div>
-                    <a style={{'fontSize': '20px'}} href="/task" onClick={this.showTask.bind(this)}>{this.props.name}</a>
-                    <p>简介：{this.props.intro}</p>
+            <div>
+                <div className="item">
+                    {/*<Route path="/task" component={taskDetail}/>*/}
+                    <img id="userimage" src="../images/photo.jpg"/>
+                    <span><a href="#" className="name">{this.props.maker}</a></span>
+                    <button id="delete"  onClick={this.deleteTask.bind(this)}>删除</button>
+                    <div>
+                        {/*<a style={{'fontSize': '20px'}} onClick={this.showTask.bind(this)}>{this.props.name}</a>*/}
+                        <Link to={path}><p style={{'fontSize': '20px'}}>{this.props.name}</p></Link>
+                        <p>简介：{this.props.intro}</p>
+                    </div>
+                    <ul className="item-footer">
+                        <li>
+                            <a>创建时间：{this.props.makerTime}</a>
+                        </li>
+                        <li>
+                            <a>参与人数：{this.props.count}人</a>
+                        </li>
+                    </ul>
                 </div>
-                <ul className="item-footer">
-                    <li>
-                        <a>创建时间：{this.props.makerTime}</a>
-                    </li>
-                    <li>
-                        <a>参与人数：{this.props.count}人</a>
-                    </li>
-                </ul>
             </div>
+
         )
     }
 }
@@ -62,7 +74,7 @@ export default class TaskItemPanel extends React.Component {
         }
         else {
             myTasks.forEach(task => {
-                items.push(<TaskItem key={task.task_id} id={task.task_id} maker={task.task_maker} name={task.task_name} intro={task.task_introduction}
+                items.push(<TaskItem key={task.task_id} task={task} id={task.task_id} maker={task.task_maker} name={task.task_name} intro={task.task_introduction}
                                      makerTime={task.task_time} count={task.count} delete={this.props.deleteTask} show={this.props.showTask}/>);
             })
         }
