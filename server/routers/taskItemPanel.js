@@ -50,17 +50,17 @@ router.post('/delete',(req, res)=>{
         }
     });
 });
-router.post('/detail',(req,res)=>{
-    console.log(req.body);
-   const id = req.body.id;
-   db.query(taskSQL.getTaskInfo,id,(err,result)=>{
-       if(err){
-           console.log(err);
-       }
-       else{
-           // console.log(result);
-           res.json(result);
-       }
-   })
-});
+// router.post('/detail',(req,res)=>{
+//     console.log(req.body);
+//    const id = req.body.id;
+//    db.query(taskSQL.getTaskInfo,id,(err,result)=>{
+//        if(err){
+//            console.log(err);
+//        }
+//        else{
+//            // console.log(result);
+//            res.json(result);
+//        }
+//    })
+// });
 module.exports=router;

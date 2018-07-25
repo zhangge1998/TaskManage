@@ -4,7 +4,6 @@ import '../style/add.css';
 import Header from '../container/header';
 import TaskDetail from '../container/taskDetail';
 import {Route,Link} from 'react-router-dom';
-// import {Link} from 'react-router';
 import PropTypes from 'prop-types'
 import index from "../reducers";
 class TaskItem extends React.Component{
@@ -24,12 +23,10 @@ class TaskItem extends React.Component{
         return (
             <div>
                 <div className="item">
-                    {/*<Route path="/task" component={taskDetail}/>*/}
                     <img id="userimage" src="../images/photo.jpg"/>
                     <span><a href="#" className="name">{this.props.maker}</a></span>
                     <button id="delete"  onClick={this.deleteTask.bind(this)}>删除</button>
                     <div>
-                        {/*<a style={{'fontSize': '20px'}} onClick={this.showTask.bind(this)}>{this.props.name}</a>*/}
                         <Link to={path}><p style={{'fontSize': '20px'}}>{this.props.name}</p></Link>
                         <p>简介：{this.props.intro}</p>
                     </div>

@@ -25,12 +25,12 @@ const mapDispatchToProps=(dispatch)=>({
             type:'ADD_FORM',
         })
     },
-    showTask:(key)=>{
-        dispatch({
-            type:'SHOW_TASK',
-            id:key
-        })
-    }
+    // showTask:(key)=>{
+    //     dispatch({
+    //         type:'SHOW_TASK',
+    //         id:key
+    //     })
+    // }
     })
 ;
 export default connect(mapStateToProps,mapDispatchToProps)(TaskItemPanel)

@@ -29,22 +29,22 @@ export default store=>next=>action=>{
     if(action.type == 'ADD_FORM'){
         window.location.href = '/addTask';
     }
-    if(action.type == 'SHOW_TASK'){
-        request.post('/detail')
-            .send(action)
-            .end((err, res)=>{
-                if(err){
-                    console.log(err);
-                }else{
-                    // window.location.href = '/task';
-                    console.log(res.body);
-                    next({type:'SHOW_TASKINFO',info:res.body});
-                    // setTimeout(function(){
-                    //     window.location.href = '/task';
-                    // },500)
-                }
-            });
-    }
+    // if(action.type == 'SHOW_TASK'){
+    //     request.post('/detail')
+    //         .send(action)
+    //         .end((err, res)=>{
+    //             if(err){
+    //                 console.log(err);
+    //             }else{
+    //                 // window.location.href = '/task';
+    //                 console.log(res.body);
+    //                 next({type:'SHOW_TASKINFO',info:res.body});
+    //                 // setTimeout(function(){
+    //                 //     window.location.href = '/task';
+    //                 // },500)
+    //             }
+    //         });
+    // }
     else
         next(action);
 }

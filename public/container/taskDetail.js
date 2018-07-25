@@ -9,11 +9,11 @@ const mapStateToProps=(state)=> {
     };
 };
 const mapDispatchToProps=(dispatch)=>({
-        getTaskInfo:()=>{
+        modifyForm:()=>{
             dispatch({
-                type:'getTaskInfo',
-            });
-        },
+                type:SHOWFORM,
+            })
+        }
     })
 
 

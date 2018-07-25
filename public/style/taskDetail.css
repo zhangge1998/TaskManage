@@ -40,7 +40,8 @@ span{
 #member{
     width:300px;
     position: relative;
-    left:60%;
+    left:70%;
+    z-index: -100;
     top:-200px;
 }
 #image{
@@ -52,4 +53,52 @@ span{
 .name{
     display: inline-block;
     vertical-align: middle;
+}
+#form{
+    display: none;
+    z-index: 1000;
+    position: relative;
+    top: -100px;
+    left: 150px;
+}
+#close{
+    float:right;
+    position: relative;
+    right: 5px;
+    top: 5px;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+#modify{
+    width: 300px;
+    height: 350px;
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: -100px;
+    bottom: 0;
+    text-align: center;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background: #fff;
+}
+#modify span{
+    font-size: 16px;
+}
+#modify input, textarea{
+    width: 169px;
+    position: relative;
+    right: -10px;
+}
+
+#modify input{
+    height: 20px;
+    margin: 5px 0;
+    /*line-height: 30px;*/
+}
+#modify textarea{
+    height: 30px;
 }
