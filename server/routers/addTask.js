@@ -26,7 +26,7 @@ router.post('/add', (req, res) => {
         if(err){
             console.log(err);
         }
-        // res.json(info);
+        res.json({status:'success'});
     });
 });
 module.exports = router;

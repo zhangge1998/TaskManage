@@ -9,10 +9,9 @@ const mapStateToProps=(state)=> {
     };
 };
 const mapDispatchToProps=(dispatch)=>({
-        sendId:(id)=>{
+        jump:()=>{
             dispatch({
-                type:'SENDID',
-                id:id
+                type:'JUMPHOME'
             })
         }
     })

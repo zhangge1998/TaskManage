@@ -6,7 +6,11 @@ const mapStateToProps=(state)=> {
     };
 };
 const mapDispatchToProps=(dispatch)=>({
-
+        add:()=>{
+            dispatch({
+                type:'ADD_TASK'
+            })
+        }
     })
 ;
 export default connect(mapStateToProps,mapDispatchToProps)(AddTask)

@@ -22,7 +22,7 @@ export default store=>next=>action=>{
                     console.log(err);
                 }else{
                     console.log(JSON.parse(res.text));
-                    window.location.href = '/myHome';
+                    next({type:'MY_TASKS',info:res.body});
                 }
             });
     }

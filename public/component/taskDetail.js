@@ -38,7 +38,7 @@ class ModifyForm extends React.Component{
                         <li><span>process4:</span><input type="text" name="four" defaultValue={info.process_4} ref={(input) => this.input = input}/></li>
                         <li><span>process5:</span><input type="text" name="five" defaultValue={info.process_5} ref={(input) => this.input = input}/></li>
                     </ol>
-                    <p><button type="submit">提交</button></p>
+                    <p><button type="submit" onClick={this.props.jump}>提交</button></p>
                 </form>
             </div>
         )
