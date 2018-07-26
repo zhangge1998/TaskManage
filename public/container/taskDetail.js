@@ -9,9 +9,10 @@ const mapStateToProps=(state)=> {
     };
 };
 const mapDispatchToProps=(dispatch)=>({
-        modifyForm:()=>{
+        sendId:(id)=>{
             dispatch({
-                type:SHOWFORM,
+                type:'SENDID',
+                id:id
             })
         }
     })

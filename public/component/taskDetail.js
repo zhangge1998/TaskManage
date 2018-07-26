@@ -18,26 +18,25 @@ function TaskStep(props) {
 }
 
 class ModifyForm extends React.Component{
-    handleName(){
-        let name = this.target.value;
-    }
     render(){
+        const {info} = this.props;
         return(
             <div id="form">
-                <form action="/modify" method="POST" id="modify">
+                <form action="/mod" method="POST" id="modify">
                     <p id="close" onClick={function(){
                         document.querySelector('#form').style.display = 'none';
                     }}>X</p>
                     <h3>修改任务</h3>
-                    <p><span>任务名：</span><input type="text" name="task" value={this.props.info.task_name} onChange={this.handleName.bind(this)}/></p>
-                    <p> <span>简&nbsp;&nbsp;&nbsp;介：</span><textarea  name="taskIntro" value={this.props.info.task_introduction}/></p>
+                    <p style={{'display':'none'}}><span>id：</span><input type="text" name="id" defaultValue={info.task_id}/></p>
+                    <p><span>任务名：</span><input type="text" name="task" defaultValue={info.task_name}/></p>
+                    <p> <span>简&nbsp;&nbsp;&nbsp;介：</span><textarea  name="taskIntro" defaultValue={info.task_introduction}/></p>
                     <p>任务进度：</p>
                     <ol>
-                        <li><span>process1:</span> <input type="text" name="first" value={this.props.info.process_1}/></li>
-                        <li><span>process2:</span><input type="text" name="second" value={this.props.info.process_2}/></li>
-                        <li><span>process3:</span><input type="text" name="third" value={this.props.info.process_3}/></li>
-                        <li><span>process4:</span><input type="text" name="four" value={this.props.info.process_4}/></li>
-                        <li><span>process5:</span><input type="text" name="five" value={this.props.info.process_5}/></li>
+                        <li><span>process1:</span> <input type="text" name="first" defaultValue={info.process_1} ref={(input) => this.input = input}/></li>
+                        <li><span>process2:</span><input type="text" name="second" defaultValue={info.process_2} ref={(input) => this.input = input}/></li>
+                        <li><span>process3:</span><input type="text" name="third" defaultValue={info.process_3} ref={(input) => this.input = input}/></li>
+                        <li><span>process4:</span><input type="text" name="four" defaultValue={info.process_4} ref={(input) => this.input = input}/></li>
+                        <li><span>process5:</span><input type="text" name="five" defaultValue={info.process_5} ref={(input) => this.input = input}/></li>
                     </ol>
                     <p><button type="submit">提交</button></p>
                 </form>

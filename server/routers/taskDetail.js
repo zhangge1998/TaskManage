@@ -6,27 +6,15 @@ const router=express.Router();
 const taskSQL=require('../databases/taskSQL');
 const processSQL=require('../databases/processSQL');
 const db=require('../databases/connect');
-router.get('/taskList',(req,res)=>{
-    // const name=req.session.onlineUsr.name;
-    // db.query(taskSQL.getMyTasks,name,(err,myTasks)=>{
-    //     if(err){
-    //         console.log(err);
-    //     }
-    //     let t=[];
-    //     myTasks.map((task)=>{
-    //         db.query(processSQL.getPerson,task.task_id,(err,person)=>{
-    //             if(err){
-    //                 console.log(err);
-    //             }
-    //             else{
-    //                 task.count=person.length;
-    //                 t.push(task);
-    //                 if(t.length===myTasks.length){
-    //                     res.json(t);
-    //                 }
-    //             }
-    //         });
-    //     });
-    // });
+router.post('/mod',(req,res)=>{
+    console.log(req.body);
+    const {id, task, taskIntro, first, second, third, four, five} = req.body;
+    db.query('update task set task_name="'+ task +'",task_introduction="'+ taskIntro +'", process_1="'+ first +'", process_2="'+ second +'", process_3="'+ third +'", process_4="'+ four +'", process_5="'+ five +'" where task_id='+ id +'',(err,myTasks)=>{
+        if(err){
+            console.log(err);
+        }else{
+            next({type:UPDATE});
+        }
+    });
 });
 module.exports=router;
